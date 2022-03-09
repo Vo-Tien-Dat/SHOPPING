@@ -20,6 +20,7 @@ function App() {
           <Route path = "/product" exact = {true} element = {<Products/>}/>
           <Route path = "/contact" exact = {true} element = {<Contact/>}/>
           <Route path = "/shopping-cart" exact = {true} element = {<ShoppingCart/>}/>
+          <Route path = "/" exact = {true} element = {<Home/>}/>
         </Routes>
         <Footer/>
       </Router>

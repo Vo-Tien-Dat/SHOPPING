@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import axios from "axios";
 import {useState, useEffect} from 'react';
 import Product from "../../Components/Products/Product";
@@ -36,7 +36,11 @@ function Products(){
                     )
                 )
                 :(
-                    <h1> vo tien dat</h1>
+                    <Container>
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </Container>
                 )
             }
             </Row>

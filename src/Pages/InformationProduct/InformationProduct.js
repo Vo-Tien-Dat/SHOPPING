@@ -35,7 +35,7 @@ function InformationProduct(){
     }, [])
 
     const handleAddProduct = () => {
-        const {id, title, price, image, description} = information;
+        const {title, price} = information;
         dispatch(addProduct({
             title,
             price, 
@@ -51,7 +51,13 @@ function InformationProduct(){
         if(value > 1){
             setValue(value - 1);
         }
-        
+    }
+
+    const handleChangeValue = (event) =>{
+        let s = event.target.value;
+        if(s[s.length -1] >='0' && s[s.length - 1] <= '9'){
+            setValue(Number(s));
+        }        
     }
 
     if(information != undefined){
@@ -96,7 +102,7 @@ function InformationProduct(){
                                     <Col sm = {3}>
                                         <InputGroup className="mb-3">
                                             <Button variant="outline-secondary" onClick = {handleDownValue}>-</Button>
-                                            <FormControl value = { value } aria-label="Example text with two button addons"/>
+                                            <FormControl value = { value } aria-label="Example text with two button addons" onChange = {handleChangeValue}/>
                                             <Button variant="outline-secondary" onClick = {handleUpValue}>+</Button>
                                         </InputGroup>
                                     </Col>
