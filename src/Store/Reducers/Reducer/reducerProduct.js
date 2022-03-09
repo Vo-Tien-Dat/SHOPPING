@@ -11,19 +11,20 @@ const reducerProduct = (state = initState, action) =>{
             }];
             state = newState;
             return state;
+
         case 'DELETE_PRODUCT':
-            index = action.index;
+            index = action.payload.index;
             newState = [...state];
             newState.splice(index, 1);
             state = newState;
             return state;
 
         case 'CHANGE_PRODUCT':
-            index = action.index;
             newState = [...state];
-            newState[index].value  = action.value;
+            index = action.payload.index;
+            newState[index].payload.value = action.payload.value;
             state = newState;
-            return state; 
+            return state;
         default: 
             return state;
     }

@@ -22,7 +22,6 @@ function InformationProduct(){
       .then(
           (res) =>{
               if(res.data != undefined){
-                console.log(res.data);
                 setInformation(res.data);
               }
           }
