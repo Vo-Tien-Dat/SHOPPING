@@ -36,6 +36,7 @@ function InformationProduct(){
     const handleAddProduct = () => {
         const {title, price} = information;
         dispatch(addProduct({
+            id,
             title,
             price, 
             value

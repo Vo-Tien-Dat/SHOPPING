@@ -6,9 +6,11 @@ import changeProduct from '../../Store/Actions/changeProduct';
 
 import {InputGroup, FormControl, Container} from 'react-bootstrap'
 import { Button, Row, Col } from 'react-bootstrap';
+
+import {Link} from 'react-router-dom';
 function Product(props){
     const {payload, index} = props;
-    const {price, value, title} = payload;
+    const {id, price, value, title} = payload;
     const dispatch = useDispatch();
     const handleUpProduct = () =>{
         dispatch(changeProduct({
@@ -38,7 +40,9 @@ function Product(props){
     }
     return(
         <tr>
-            <td>{title}</td>
+            <td>
+                <Link to = {`/product/${id}`} >{title}</Link>
+            </td>
             <td>{price}</td>
             <td>
                 <Container >
@@ -55,7 +59,7 @@ function Product(props){
                 </Container>
                 
             </td>
-            <td>{price * value}</td>
+            <td>{parseFloat(price * value).toFixed(2)}</td>
             <td>
                 <Button onClick = {handleDeleteProduct}> Xóa sản phẩm</Button>
             </td>

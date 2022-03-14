@@ -3,14 +3,18 @@ import {Container, Table} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import Product from '../../Components/ShoppingCart/Product';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+
 function ShoppingCart(){
     const products = useSelector(state => state.reducerProduct);
-    console.log('rendering...');
     const sumTotalProduct  = products.reduce((total, currentValue ) => {
         let {value, price} = currentValue.payload;
-        return total + value * price;
+        return total + (price * value);
     },0);
     if(products != null){
+        if(products.length != 0){
+        }
         return(
             <>
                 <Table striped bordered hover>
@@ -35,8 +39,13 @@ function ShoppingCart(){
                     </tbody>
                 </Table>
                 <Container>
-                    <h1> {`Tổng tiền tạm tính:${sumTotalProduct}`} </h1>
-                    <Button>Tiến hành đặt hàng</Button>
+                    <h1> {`Tổng tiền tạm tính:${parseFloat(sumTotalProduct).toFixed(2)}`} </h1>
+                    <Button>
+                        <Link to = "/cart" style = {{
+                            textDecoration: 'none',
+                            color: 'white'
+                        }}>Tiến hành đặt hàng</Link>
+                    </Button>
                 </Container>
             </>
         )

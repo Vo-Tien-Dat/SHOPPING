@@ -8,6 +8,7 @@ import Products from './Pages/Products/Products';
 import InformationProduct from './Pages/InformationProduct/InformationProduct';
 import Contact from './Pages/Contact/Contact';
 import ShoppingCart from './Pages/ShoppingCart/ShoppingCart';
+import Cart from './Pages/Cart/Cart';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path = "/product" exact = {true} element = {<Products/>}/>
           <Route path = "/contact" exact = {true} element = {<Contact/>}/>
           <Route path = "/shopping-cart" exact = {true} element = {<ShoppingCart/>}/>
+          <Route path = "/cart" exact = {true} element = {<Cart/>}/>
           <Route path = "/" exact = {true} element = {<Home/>}/>
         </Routes>
         <Footer/>
