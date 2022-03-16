@@ -24,7 +24,9 @@ function Products(){
     }, [])
     
     return(
-        <Container>
+        <Container style = {{
+            marginTop: '10px'
+        }}>
             <Row>
             {
                 products != undefined

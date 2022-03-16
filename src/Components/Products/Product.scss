@@ -1,6 +1,27 @@
 
 
 
+.products{
+    width: 95%;
+    height: 95%;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.products:hover{
+    width: 97%;
+    height: 97%;
+}
+
+
+
 .TitleProduct{
     white-space: nowrap;
     overflow: hidden;

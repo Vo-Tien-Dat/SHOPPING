@@ -10,7 +10,8 @@ import { Button, Row, Col } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 function Product(props){
     const {payload, index} = props;
-    const {id, price, value, title} = payload;
+    const {id, price, value, title,image} = payload;
+    console.log(image);
     const dispatch = useDispatch();
     const handleUpProduct = () =>{
         dispatch(changeProduct({
@@ -39,31 +40,46 @@ function Product(props){
 
     }
     return(
-        <tr>
-            <td>
-                <Link to = {`/product/${id}`} >{title}</Link>
-            </td>
-            <td>{price}</td>
-            <td>
-                <Container >
-                    <Row>
-                        <Col sm = {4}></Col>
-                        <Col sm = {4}>
-                            <InputGroup className="mb-3">
-                                <Button variant="outline-secondary" onClick = {handleDownProduct}>-</Button>
-                                <FormControl value = { value } aria-label="Example text with two button addons" onChange = {handleChangeValue}/>
-                                <Button variant="outline-secondary" onClick = {handleUpProduct}>+</Button>
-                            </InputGroup>
-                        </Col>
-                    </Row>
-                </Container>
-                
-            </td>
-            <td>{parseFloat(price * value).toFixed(2)}</td>
-            <td>
-                <Button onClick = {handleDeleteProduct}> Xóa sản phẩm</Button>
-            </td>
-        </tr>
+        <Container style = {{
+            borderRadius:'15px',
+            width: '60%',
+            marginTop: '15px',
+            boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'
+        }}>
+            <Row >
+                <Col sm = {4}>
+                    <img src = {image} style = {{
+                        width: '100%'
+                    }}/>
+                </Col>
+                <Col sm = {8}>
+                    <Link to = {`/product/${id}`} style = {{
+                        textDecoration: 'none',
+                        color: 'black',
+                        fontWeight: '600'
+                    }} >{title}</Link>
+                    <h6>{price}</h6>
+                    <Container >
+                        <Row>
+                            <Col sm = {4}>Chọn số lượng: </Col>
+                            <Col sm = {4}>
+                                <InputGroup className="mb-3">
+                                    <Button variant="outline-secondary" onClick = {handleDownProduct}>-</Button>
+                                    <FormControl value = { value } aria-label="Example text with two button addons" onChange = {handleChangeValue}/>
+                                    <Button variant="outline-secondary" onClick = {handleUpProduct}>+</Button>
+                                </InputGroup>
+                            </Col>
+                        </Row>
+                    </Container>
+                    <Button onClick = {handleDeleteProduct} style = {{
+                        backgroundColor: 'orange',
+                        border: '1px solid orange',
+                        fontWeight: '700'
+                    }}> Xóa Sản Phẩm</Button>
+                </Col>
+            </Row>
+            
+        </Container>
     )
 }
 

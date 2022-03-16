@@ -2,7 +2,7 @@
 import {Container, Table} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import Product from '../../Components/ShoppingCart/Product';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -16,18 +16,8 @@ function ShoppingCart(){
         if(products.length != 0){
         }
         return(
-            <>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Sản phẩm</th>
-                            <th>Đơn giá</th>
-                            <th>Số lượng</th>
-                            <th>Số tiền</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <Container>
+                <Container>
                     {
                         products.map(
                             (data, index) =>{
@@ -36,18 +26,41 @@ function ShoppingCart(){
                                 )
                         })
                     }
-                    </tbody>
-                </Table>
-                <Container>
-                    <h1> {`Tổng tiền tạm tính:${parseFloat(sumTotalProduct).toFixed(2)}`} </h1>
-                    <Button>
+                </Container>
+
+                <Container style = {{
+                    marginTop: '20px',
+                    width: '60%',
+                    boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                    borderRadius: '20px'
+                }}>
+                    <Container>
+                        <Row>
+                            <Col sm = {8}>
+                                <h4 style = {{
+                                    marginTop: '5px'
+                                }}> {`Tổng tiền tạm tính:`} </h4>
+                            </Col>
+                            <Col sm = {4}>
+                                <h4>{`${parseFloat(sumTotalProduct).toFixed(2)}`}</h4>
+                            </Col>
+                        </Row>
+                    </Container>
+                    <Button style = {{
+                        marginTop: '5px',
+                        marginBottom:'10px',
+                        backgroundColor: 'orange',
+                        width: '100%',
+                        border: '1px solid orange',
+                        fontWeight: '700'
+                    }}>
                         <Link to = "/cart" style = {{
                             textDecoration: 'none',
                             color: 'white'
                         }}>Tiến hành đặt hàng</Link>
                     </Button>
                 </Container>
-            </>
+            </Container>
         )
     }
     else{

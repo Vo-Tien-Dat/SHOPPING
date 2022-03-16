@@ -34,12 +34,13 @@ function InformationProduct(){
     }, [])
 
     const handleAddProduct = () => {
-        const {title, price} = information;
+        const {title, price, image} = information;
         dispatch(addProduct({
             id,
             title,
             price, 
-            value
+            value,
+            image
         }));
     }
     
@@ -63,53 +64,84 @@ function InformationProduct(){
     if(information != undefined){
         const {id, title, price, image, description} = information;
         return(
-            <Container>
+            <Container style = {{
+                marginTop: '20px'
+            }}>
                 <Row style = {{
                     border: 'black',
-                    backgroundColor: '#F0F8FF',
-                    borderRadius:'5px',
-                    height: '500px'
+                    height: '500px',
+                    boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'
                 }}>
                     <Col sm = {4} style = {{
-                        height: '100%'
+                        height: '100%',
+                        
                     }}>
                         <Image src = {image} style = {{
-                            height: '100%'
+                            height: '90%',
+                            width: '95%',
+                            boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'
                         }}/>
                     </Col>
                     <Col sm = {8} style = {{
                         height: '100%'
                     }}>
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>
-                                    {title}
-                                </Card.Title>
+                        
+                        <Container style = {{
+                            height: '70%',
+                            paddingTop:'20px',
+                            boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+                            borderRadius: '15px'
+                        }}>
 
-                                <Card.Text>
-                                    {price}
-                                </Card.Text>
+                            <div style = {{
+                                overflow: 'auto'
+                            }}>
+                                <h6 style = {{
+                                    fontSize: '30px',
+                                    textAlign: 'left'
+                                }}>{title}</h6>
+                            </div>
 
-                                <Card.Text>
-                                    {description}
-                                </Card.Text>
-                            </Card.Body>
-                            <Container>
-                                <Row>
-                                    <Col sm = {6}>
-                                        <h6> Số lượng: </h6>
-                                    </Col>
-                                    <Col sm = {3}>
-                                        <InputGroup className="mb-3">
-                                            <Button variant="outline-secondary" onClick = {handleDownValue}>-</Button>
-                                            <FormControl value = { value } aria-label="Example text with two button addons" onChange = {handleChangeValue}/>
-                                            <Button variant="outline-secondary" onClick = {handleUpValue}>+</Button>
-                                        </InputGroup>
-                                    </Col>
-                                </Row>
-                                <Button onClick = {handleAddProduct}> THÊM VÀO GIỎ HÀNG</Button>
-                            </Container>
-                        </Card>
+                            <div style = {{
+                                overflow: 'auto'
+                            }}>
+                                <h6 style = {{
+                                    fontSize:'20px',
+                                    textAlign: 'left'
+                                }}>{price}</h6>
+                            </div>
+                            
+                            <div style = {{
+                                overflow: 'auto'
+                            }} >
+                                <h6 style = {{
+                                    fontSize: '15px',
+                                    float: 'left',
+                                    textAlign: 'left'
+                                }}>{description}</h6>
+                            </div>
+                            
+                        </Container>
+                        <Container style = {{
+                            height: '30%',
+                            padding: '5%'
+                        }}>
+                            <Row>
+                                <Col sm = {6}>
+                                    <h6> Số lượng: </h6>
+                                </Col>
+                                <Col sm = {3}>
+                                    <InputGroup className="mb-3">
+                                        <Button variant="outline-secondary" onClick = {handleDownValue}>-</Button>
+                                        <FormControl value = { value } aria-label="Example text with two button addons" onChange = {handleChangeValue}/>
+                                        <Button variant="outline-secondary" onClick = {handleUpValue}>+</Button>
+                                    </InputGroup>
+                                </Col>
+                            </Row>
+                            <Button onClick = {handleAddProduct} style = {{
+                                backgroundColor: 'orange'
+                            }}> THÊM VÀO GIỎ HÀNG</Button>
+                        </Container>
                         
                     </Col>
                 </Row>

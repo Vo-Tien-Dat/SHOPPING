@@ -1,4 +1,4 @@
-import {Card, Button,} from 'react-bootstrap';
+import {Card, Button, Container} from 'react-bootstrap';
 import './Product.scss';
 import {Link} from 'react-router-dom';
 
@@ -7,21 +7,32 @@ function Product(props){
     return(
         <Link to = {`/product/${id}`} style = {{
             textDecorationLine: 'none',
-            color: 'black'
+            color: 'black',
+            
         }}>
-            <Card style={{ 
+            <Container style={{ 
                 width: '18rem',
                 height: '350px',
-                padding:'20px'
+                padding: '0px',
+                position: 'relative'
             }}>
-                <Card.Img variant="top" src = { image } style = {{
-                    height: '80%'
-                }} />
-                <Card.Body>
-                    <Card.Title className = "TitleProduct">{title}</Card.Title>
-                    <Card.Text>{price}</Card.Text>
-                </Card.Body>
-            </Card>
+                <Container style = {{
+                    
+                }} className = "products">
+                    <Card style={{ 
+                        width: '100%',
+                        height: '100%',
+                    }}>
+                        <Card.Img variant="top" src = { image } style = {{
+                            height: '75%'
+                        }} />
+                        <Card.Body >
+                            <Card.Title className = "TitleProduct">{title}</Card.Title>
+                            <Card.Text>{price}</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Container>
+            </Container>
         </Link>
         
     )
